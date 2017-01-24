@@ -15,7 +15,7 @@ var dayNames = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"
 
 var CookiePrefix = "taco_stpg_"; //prefix for cookies.
 var cmdPrefix = "!"; //prefix for commands.
-var ssi = 1; //set default search provider. Use array index of the array below. (Starting with 0)
+var ssi = 0; //set default search provider. Use array index of the array below. (Starting with 0)
 // Format: [Keyword, Search URL (Search query replaces "{Q}"), "Input placeholder text"]
 var searchSources = [
   ["g",    "https://www.google.com/#q={Q}",                      "Google"],
