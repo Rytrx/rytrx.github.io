@@ -7,7 +7,7 @@ var $ = function(id) {
   return document.getElementById(id);
 };
 var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-var dayNames = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THRUSDAY", "FRIDAY", "SATURDAY"];
+var dayNames = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
 
 /*==============*/
 /*== Options ==*/
@@ -18,14 +18,14 @@ var cmdPrefix = "!"; //prefix for commands.
 var ssi = 1; //set default search provider. Use array index of the array below. (Starting with 0)
 // Format: [Keyword, Search URL (Search query replaces "{Q}"), "Input placeholder text"]
 var searchSources = [
-  ["bbt",      "http://bakabt.me/browse.php?q={Q}",                      "BakaBT"],
-  ["g",        "https://www.google.com/#q={Q}",                          "google_logo"],
-  ["im",       "https://www.google.com/search?tbm=isch&q={Q}",           "google_logo Images"],
-  ["imdb",     "http://www.imdb.com/find?q={Q}",                         "IMDB"],
-  ["nya",      "https://www.nyaa.se/?page=search&term={Q}",              "Nyaa Torrents"],
-  ["ud",       "http://www.urbandictionary.com/define.php?term={Q}",     "Urban Dictionary"],
-  ["wp",       "http://en.wikipedia.org/w/index.php?search={Q}",         "Wikipedia"],
-  ["yt",       "https://www.youtube.com/results?search_query={Q}",       "YouTube"]
+  ["g",    "https://www.google.com/#q={Q}",                      "Google"],
+  ["im",   "https://www.google.com/search?tbm=isch&q={Q}",       "Google Images"],
+  ["imdb", "http://www.imdb.com/find?q={Q}",                     "IMDB"],
+  ["nya",  "https://www.nyaa.se/?page=search&term={Q}",          "Nyaa Torrents"],
+  ["so",   "http://stackoverflow.com/search?q={Q}",              "Stack Overflow"],
+  ["ud",   "http://www.urbandictionary.com/define.php?term={Q}", "Urban Dictionary"],
+  ["w",    "http://en.wikipedia.org/w/index.php?search={Q}",     "Wikipedia"],
+  ["yt",   "https://www.youtube.com/results?search_query={Q}",   "YouTube"]
 ];
 
 // Because I care about readability in my JS. kthx.
@@ -46,43 +46,16 @@ var svgTrash   = "<svg style=\"width:24px;height:24px\" xmlns=\"http://www.w3.or
 */
 // Also yes I could totally use a json object to represent the menus, but I didn't feel like reprogramming the whole script. Probably doing that next site, though.
 var linkMenu = [
-  [svgTrash,                   "blue",                                        "-HEAD-"], // Anime
-  ["AnimeNewsNetwork",         "",""],
-  ["MyAnimeList",              "",""],
-  ["Nyaa Tracker",             "",""],
-  ["BakaBT",                   "",""],
+  [svgMore, "blue", "-HEAD-"],
+  ["1",         "",""],
+  ["2",              "",""],
+  ["3",             "",""],
+  ["4",                   "",""],
   
-  [svgSocial,                  "green",                                       "-HEAD-"], // Media
-  ["YouTube",                  "",""],
-  ["Facebook",                 "",""],
-  ["Reddit",                   "",""],
-  ["Twitch",                   "",""],
-  ["DeviantArt",               "",""],
+  [svgCode, "red", "-HEAD-"],
+  ["GitHub",                   "https://github.com/", ""],
+  ["Stack Overflow",           "http://stackoverflow.com/", ""],
   
-  [svgClover,                  "cyan",                                        "-HEAD-"], // 4chan
-  ["/a/ Anime & Manga",        "",""],
-  ["/g/ Technology",           "",""],
-  ["/w/ Anime/Wallpapers",     "",""],
-  ["/wg/ Wallpaper/General",   "",""],
-  
-  [svgCode,                    "red",                                         "-HEAD-"], // Code Stuff
-  ["GitHub",                   "",""],
-  ["Gist",                     "",""],
-  ["JSFiddle",                 "",""],
-  ["Stack Overflow",           "",""],
-  
-  [svgGamepad,                 "magenta",                                     "-HEAD-"], // Gaming
-  ["Steam",                    "",""],
-  ["Humble Bundle",            "",""],
-  ["GOG.com",                  "",""],
-  ["/r/gaming",                "",""],
-  
-  [svgMore,                    "yellow",                                      "-HEAD-"], // Other
-  ["Gmail",                    "",""],
-  ["Amazon",                   "",""],
-  ["Dropbox",                  "",""],
-  ["Netflix",                  "",""],
-  ["Weather",                  "",""],
 ];
 // DID I FORGET TO MENTION?! THE DEMO LINKS DO NOTHING!
 
