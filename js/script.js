@@ -46,13 +46,14 @@ var svgTrash   = "<svg style=\"width:24px;height:24px\" xmlns=\"http://www.w3.or
 */
 // Also yes I could totally use a json object to represent the menus, but I didn't feel like reprogramming the whole script. Probably doing that next site, though.
 var linkMenu = [
-  [svgMore, "blue", "-HEAD-"],
-  ["1",         "",""],
-  ["2",              "",""],
-  ["3",             "",""],
-  ["4",                   "",""],
+  [svgSocial, "blue", "-HEAD-"], //Social
+  ["Facebook",         "http://facebook.com/", ""],
+
+  [svgTrash , "white", "-HEAD-"], //Reddit
+  ["/r/dota2", "https://www.reddit.com/r/dota2/", ""],
+  ["/r/worldnews", "https://www.reddit.com/r/worldnews/", ""],
   
-  [svgCode, "red", "-HEAD-"],
+  [svgCode, "red", "-HEAD-"], //Code
   ["GitHub",                   "https://github.com/", ""],
   ["Stack Overflow",           "http://stackoverflow.com/", ""],
   
