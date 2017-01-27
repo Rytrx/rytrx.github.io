@@ -1,0 +1,75 @@
+/*====================*/
+/*== Core Elements ==*/
+/*==================*/
+
+body {
+  background: #0d1011;
+  font-family: "Roboto", sans-serif;
+  font-size: 9pt;
+  color: #fff;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  transition: opacity .8s ease;
+  overflow: hidden;
+}
+ul, li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+a, a:link, a:visited {
+  color: #1F2326;
+  text-decoration: none;
+}
+a:hover, a:active {
+  color: #fff;
+}
+textarea {
+  font-family: "Roboto", sans-serif;
+}
+
+.background {
+  background: #0d1011 url("../media/redforest.jpg") no-repeat center fixed;
+  background-size: cover;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+}
+
+/*==============*/
+/*== Widgets ==*/
+/*============*/
+
+.widget {
+  top: 20px;
+  left: 20px;
+  position: fixed;
+  font-family: 'Roboto';
+  font-weight: 300;
+  text-shadow: 0  0    8px rgba(0,0,0,.18),
+               0  8px 16px rgba(0,0,0,.36);
+  opacity: 0;
+  transition: opacity 0.2s cubic-bezier(0.4, 0.0, 0.2, 1) 0.05s;
+}
+.widget.align-right {
+  left: initial;
+  right: 20px;
+  text-align: right;
+}
+.widget.align-bottom {
+  top: initial;
+  bottom: 20px;
+}
+
+/*==============*/
+/*== Helpers ==*/
+/*============*/
+
+.font-3em {
+  font-size: 3em;
+}
