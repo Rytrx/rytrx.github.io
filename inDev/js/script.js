@@ -7,17 +7,11 @@ var $ = function (id) {
 var dateDiv = $('dateContainer');
 
 function init() {
-    initSearchBar();
     buildDate();
 
     //Fade in
     $('body').style.opacity = 1;
-    //$('mainContainer').style.opacity = 1;
     $('dateContainer').style.opacity = 1;
-}
-
-function initSearchBar() {
-
 }
 
 var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
