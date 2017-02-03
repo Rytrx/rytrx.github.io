@@ -44,6 +44,9 @@ function buildDate() {
 /* ====== Spotlight Search ======= */
 /* ============================== */
 
+var navIndex = -1;
+var navList = [];
+
 /**
  * Handles keyboard input in spotlight search box
  */
@@ -52,7 +55,7 @@ function handleQuery(event, query) {
 
     if (key === 27) { //escape
         spotlight.value = "";
-        buildSpotlightResults("");
+        resetSpotLightSearch();
 
     } else if (key === 13) { //enter
         navigate();
@@ -70,13 +73,17 @@ function handleQuery(event, query) {
  * Build spotlight results
  */
 function buildSpotlightResults(query) {
+    resetSpotLightSearch();
+
     if (query !== "") {
-
         searchList.innerHTML = buildLinkOptions(query) + buildSearchOptions(query);
-
-    } else {
-        searchList.innerHTML = "";
     }
+}
+
+function resetSpotLightSearch() {
+    navList = [];
+    navIndex = -1;
+    searchList.innerHTML = "";
 }
 
 /**
@@ -89,6 +96,7 @@ function buildLinkOptions(query) {
         for (var i = 0; i < links.length; i++) {
             if (links[i][0].toLowerCase().includes(query.toLowerCase())) {
                 linkOptions += "<li><span>" + links[i][0] + "</span></li>";
+                navList.push(links[i][1]);
             }
         }
     }
@@ -113,6 +121,7 @@ function buildSearchOptions(query) {
     var searchOptions = "";
     for (var i = 0; i < searchSources.length; i++) {
         searchOptions += "<li><span>Search " + searchSources[i][0] + " for " + viewText + "</span></li>";
+        navList.push(searchSources[i][1]);
     }
 
     return searchOptions;
@@ -122,22 +131,38 @@ function buildSearchOptions(query) {
  * Navigate to link or search option
  */
 function navigate() {
-    window.location = searchSources[0][1].replace("{Q}", encodeURIComponent(spotlight.value));
+    var query = spotlight.value;
+
+    if (query !== "") {
+        //Default to first result
+        if (navIndex < 0) {
+            navIndex = 0;
+        }
+
+        var url = navList[navIndex];
+
+        if (url.includes("{Q}")) {
+            window.location = url.replace("{Q}", encodeURIComponent(spotlight.value));
+        } else {
+            window.location = url;
+        }
+    }
 }
 
 /**
  * Highlight link / search option
  */
 function highlightOption(key) {
-    var index = -1;
+    if (searchList.innerHTML !== "") {
 
-    if (key === 38) {
-        index--;
-    } else {
-        index++;
+        if (key === 38 && navIndex > -1) {
+            navIndex--;
+
+        } else if (key === 40 && navIndex < navList.length - 1) {
+            navIndex++;
+        }
+
     }
-
-    alert(index);
 }
 
 /* -------------------------------- */
