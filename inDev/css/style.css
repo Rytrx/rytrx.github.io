@@ -53,6 +53,20 @@ textarea {
   width: 100%;
 }
 
+#spotlight_box {
+  display: block;
+  width: 628px;
+  margin: auto;
+  border-radius: 5px;
+  box-shadow: 0 25px 60px 10px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  outline: none;
+  
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  color: #aaa;
+  background-color: #1F2326;
+}
+
 #spotlight {
   display: block;
   width: 628px;
@@ -71,6 +85,17 @@ textarea {
   background-repeat: no-repeat;
   background-size: 3.5%;
   padding: 0 52px;
+}
+
+#searchList {
+  font-size: 1.0rem;
+}
+
+#searchList li {
+  border-bottom: 1px solid #fff;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 25px;
 }
 
 /*==============*/
