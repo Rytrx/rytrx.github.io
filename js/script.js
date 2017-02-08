@@ -1,19 +1,22 @@
+$(document).ready(function () {
 
-var $ = function (id) {
-    return document.getElementById(id);
-};
+    init();
+
+});
 
 //core element vars
-var dateDiv = $('dateContainer');
-var searchList = $('searchList');
-var spotlight = $('spotlight');
+var dateDiv = $('#dateContainer');
+var searchList = $('#searchList');
+var spotlight = $('#spotlight');
 
 function init() {
     buildDate();
 
     //Fade in
-    $('body').style.opacity = 1;
-    $('dateContainer').style.opacity = 1;
+    $("#body").css('opacity', '1');
+    $('#dateContainer').css('opacity', '1');
+
+    spotlight.focus();
 }
 
 /* ================================ */
@@ -28,7 +31,7 @@ var dayNames = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"
  */
 function buildDate() {
     var today = new Date();
-    dateDiv.innerHTML = "<font class=\"font-3em\">" +
+    dateDiv.html("<font class=\"font-3em\">" +
         monthNames[today.getMonth()] +
         " " +
         today.getDate() +
@@ -36,7 +39,7 @@ function buildDate() {
         dayNames[today.getDay()] +
         ", " +
         today.getFullYear() +
-        "</font>";
+        "</font>");
 }
 /* -------------------------------- */
 
@@ -46,6 +49,7 @@ function buildDate() {
 
 var navIndex = -1;
 var navList = [];
+var buildIndex = 0;
 
 /**
  * Handles keyboard input in spotlight search box
@@ -54,7 +58,7 @@ function handleQuery(event, query) {
     var key = event.keyCode || event.which;
 
     if (key === 27) { //escape
-        spotlight.value = "";
+        spotlight.val("");
         resetSpotLightSearch();
 
     } else if (key === 13) { //enter
@@ -75,15 +79,17 @@ function handleQuery(event, query) {
 function buildSpotlightResults(query) {
     resetSpotLightSearch();
 
+    buildIndex = 0;
+
     if (query !== "") {
-        searchList.innerHTML = buildLinkOptions(query) + buildSearchOptions(query);
+        searchList.html(buildLinkOptions(query) + buildSearchOptions(query));
     }
 }
 
 function resetSpotLightSearch() {
     navList = [];
     navIndex = -1;
-    searchList.innerHTML = "";
+    searchList.html("");
 }
 
 /**
@@ -95,7 +101,7 @@ function buildLinkOptions(query) {
     if (query.length >= 2) {
         for (var i = 0; i < links.length; i++) {
             if (links[i][0].toLowerCase().includes(query.toLowerCase())) {
-                linkOptions += "<li><span>" + links[i][0] + "</span></li>";
+                linkOptions += "<li id='option" + buildIndex++ + "'class='option'><span>" + links[i][0] + "</span></li>";
                 navList.push(links[i][1]);
             }
         }
@@ -103,7 +109,6 @@ function buildLinkOptions(query) {
 
     return linkOptions;
 }
-
 
 /**
  * Build search options list
@@ -120,7 +125,7 @@ function buildSearchOptions(query) {
 
     var searchOptions = "";
     for (var i = 0; i < searchSources.length; i++) {
-        searchOptions += "<li><span>Search " + searchSources[i][0] + " for " + viewText + "</span></li>";
+        searchOptions += "<li id='option" + buildIndex++ + "' class='option'><span>Search " + searchSources[i][0] + " for " + viewText + "</span></li>";
         navList.push(searchSources[i][1]);
     }
 
@@ -131,7 +136,7 @@ function buildSearchOptions(query) {
  * Navigate to link or search option
  */
 function navigate() {
-    var query = spotlight.value;
+    var query = spotlight.val();
 
     if (query !== "") {
         //Default to first result
@@ -142,7 +147,7 @@ function navigate() {
         var url = navList[navIndex];
 
         if (url.includes("{Q}")) {
-            window.location = url.replace("{Q}", encodeURIComponent(spotlight.value));
+            window.location = url.replace("{Q}", encodeURIComponent(spotlight.val()));
         } else {
             window.location = url;
         }
@@ -153,7 +158,7 @@ function navigate() {
  * Highlight link / search option
  */
 function highlightOption(key) {
-    if (searchList.innerHTML !== "") {
+    if (searchList.html() !== "") {
 
         if (key === 38 && navIndex > -1) {
             navIndex--;
@@ -161,6 +166,9 @@ function highlightOption(key) {
         } else if (key === 40 && navIndex < navList.length - 1) {
             navIndex++;
         }
+
+        $(".option").removeClass("active");
+        $("#option" + navIndex).addClass("active");
 
     }
 }

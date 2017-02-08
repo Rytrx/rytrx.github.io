@@ -1,9 +1,28 @@
 var links = [
+    // Social
     ["Facebook", "http://facebook.com/", "", ["fb"]],
+    ["Gmail", "https://mail.google.com/mail/?uip=1#inbox", ""],
+
+    // Procrastination
+    ["imgur", "http://imgur.com/", ""],
+
+    // Shopping
+    ["Amazon", "http://www.amazon.co.uk/", ""],
+
+    // Reddit
     ["/r/dota2", "https://www.reddit.com/r/dota2/", ""],
     ["/r/worldnews", "https://www.reddit.com/r/worldnews/", "", ["wn"]],
+
+    // Media
+    ["Netflix", "http://www.netflix.com/", ""],
+    ["YouTube", "http://uk.youtube.com/", "", ["yt"]],
+
+    // Development
     ["GitHub", "https://github.com/", ""],
-    ["Stack Overflow", "http://stackoverflow.com/", "", ["so"]]
+    ["Stack Overflow", "http://stackoverflow.com/", "", ["so"]],
+
+    // Other
+    ["Wikipedia", "http://en.wikipedia.org/wiki/Main_Page", ""]
 ];
 
 //Urls for search functionality
